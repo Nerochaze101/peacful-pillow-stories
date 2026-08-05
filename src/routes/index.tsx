@@ -86,7 +86,7 @@ function Index() {
           className="absolute inset-0 h-full w-full object-cover"
           aria-label="Animated bedtime story clip of a boy in a moonlit forest"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_55%,transparent),color-mix(in_oklab,var(--background)_92%,transparent))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_35%,transparent),color-mix(in_oklab,var(--background)_75%,transparent))]" />
         <div className="starfield relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-20 text-center sm:px-10">
           <span className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground backdrop-blur-sm">
             <Moon className="h-3.5 w-3.5" /> Peaceful Pillow Stories
