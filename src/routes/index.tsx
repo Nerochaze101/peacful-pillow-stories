@@ -73,36 +73,44 @@ function Index() {
   return (
     <main className="mx-auto w-full max-w-5xl px-5 pb-20 pt-12 sm:px-8">
       {/* HERO */}
-      <section className="starfield rounded-4xl px-2 py-8 text-center sm:px-8">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground">
-          <Moon className="h-3.5 w-3.5" /> Peaceful Pillow Stories
-        </span>
-        <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl">
-          Transform Bedtime Into a Peaceful, Screen-Free Adventure 🌙✨
-        </h1>
-        <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-          Give your child high-quality, beautifully illustrated bedtime storybooks delivered straight
-          to your device every single week.
-        </p>
-
-        <div className="surface-card mx-auto mt-9 overflow-hidden p-2">
-          <video
-            src={heroVideo.url}
-            autoPlay
-            loop
-            muted
-            playsInline
-            controls
-            className="w-full rounded-3xl"
-            aria-label="Animated bedtime story clip of a boy in a moonlit forest"
-          />
-        </div>
-
-
-        <div className="mt-9">
-          <CTA>🔑 Claim Your Access Pass Now</CTA>
+      <section className="relative -mx-5 overflow-hidden rounded-4xl sm:-mx-8">
+        <video
+          src={heroVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="absolute inset-0 h-full w-full object-cover"
+          aria-label="Animated bedtime story clip of a boy in a moonlit forest"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_55%,transparent),color-mix(in_oklab,var(--background)_92%,transparent))]" />
+        <div className="starfield relative flex min-h-[80vh] flex-col items-center justify-center px-6 py-20 text-center sm:px-10">
+          <span className="animate-fade-in inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-muted-foreground backdrop-blur-sm">
+            <Moon className="h-3.5 w-3.5" /> Peaceful Pillow Stories
+          </span>
+          <h1
+            className="animate-fade-in mt-6 text-4xl font-black leading-tight drop-shadow-lg sm:text-6xl"
+            style={{ animationDelay: "120ms", animationFillMode: "backwards" }}
+          >
+            Transform Bedtime Into a Peaceful, Screen-Free Adventure 🌙✨
+          </h1>
+          <p
+            className="animate-fade-in mx-auto mt-5 max-w-2xl text-lg text-foreground/85"
+            style={{ animationDelay: "260ms", animationFillMode: "backwards" }}
+          >
+            Give your child high-quality, beautifully illustrated bedtime storybooks delivered
+            straight to your device every single week.
+          </p>
+          <div
+            className="animate-fade-in mt-10"
+            style={{ animationDelay: "400ms", animationFillMode: "backwards" }}
+          >
+            <CTA className="float-slow">🔑 Claim Your Access Pass Now</CTA>
+          </div>
         </div>
       </section>
+
 
       {/* PROBLEM / SOLUTION */}
       <section className="mt-20 grid gap-6 md:grid-cols-2">
