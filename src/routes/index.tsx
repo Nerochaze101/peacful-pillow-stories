@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Moon, Sparkles, BookOpen, Tablet, Palette, MessageCircleHeart, Check, Star } from "lucide-react";
-import heroForest from "@/assets/hero-forest.jpg";
+import heroVideo from "@/assets/hero-forest.mp4.asset.json";
 
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
 
@@ -86,14 +86,18 @@ function Index() {
         </p>
 
         <div className="surface-card mx-auto mt-9 overflow-hidden p-2">
-          <img
-            src={heroForest}
-            alt="Illustrated boy in pajamas holding a lantern in a moonlit forest with an owl and a deer"
-            width={1280}
-            height={800}
+          <video
+            src={heroVideo.url}
+            autoPlay
+            loop
+            muted
+            playsInline
+            controls
             className="w-full rounded-3xl"
+            aria-label="Animated bedtime story clip of a boy in a moonlit forest"
           />
         </div>
+
 
         <div className="mt-9">
           <CTA>🔑 Claim Your Access Pass Now</CTA>
