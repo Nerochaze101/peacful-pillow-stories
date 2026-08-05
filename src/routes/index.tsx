@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Moon, Sparkles, BookOpen, Tablet, Palette, MessageCircleHeart, Check, Star } from "lucide-react";
-import heroForest from "@/assets/hero-forest.jpg";
+import heroVideo from "@/assets/hero-forest.mp4.asset.json";
 
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
 
