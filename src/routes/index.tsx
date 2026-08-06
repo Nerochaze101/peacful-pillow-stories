@@ -138,17 +138,8 @@ function Index() {
 
       <section className="relative -mx-5 overflow-hidden rounded-4xl sm:-mx-8">
 
-        {/* BACKGROUND VIDEO */}
-        <video
-          src={heroVideo.url}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 h-full w-full object-cover"
-          aria-label="Animated bedtime story clip of a boy in a moonlit forest"
-        />
+        {/* BACKGROUND VIDEO (poster-first, mobile-optimized) */}
+        <HeroVideo />
 
         {/* DARK / DREAMY OVERLAY */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_25%,transparent),color-mix(in_oklab,var(--background)_80%,transparent))]" />
