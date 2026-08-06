@@ -327,7 +327,7 @@ function Index() {
             HERO CONTENT
             ===================================================== */}
 
-        <div className="starfield relative z-10 flex min-h-[80vh] flex-col items-center justify-center px-5 py-20 text-center sm:px-10">
+        <div className="starfield relative z-10 flex min-h-[72svh] flex-col items-center justify-center px-4 py-14 text-center sm:min-h-[80vh] sm:px-10 sm:py-20">
 
           {/* =====================================================
               LARGE CURVED STORYBOOK BRAND
@@ -432,7 +432,7 @@ function Index() {
           {/* MAIN HEADLINE */}
 
           <h1
-            className="animate-fade-in mt-2 max-w-4xl text-4xl font-black leading-tight drop-shadow-lg sm:mt-0 sm:text-6xl"
+            className="animate-fade-in mt-2 max-w-4xl text-balance text-3xl font-black leading-tight drop-shadow-lg sm:mt-0 sm:text-6xl"
             style={{
               animationDelay: "180ms",
               animationFillMode: "backwards",
@@ -444,7 +444,7 @@ function Index() {
           {/* SUBTITLE */}
 
           <p
-            className="animate-fade-in mx-auto mt-5 max-w-2xl text-lg text-foreground/85"
+            className="animate-fade-in mx-auto mt-4 max-w-2xl text-pretty text-base text-foreground/85 sm:mt-5 sm:text-lg"
             style={{
               animationDelay: "300ms",
               animationFillMode: "backwards",
