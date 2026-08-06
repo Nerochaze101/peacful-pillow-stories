@@ -148,7 +148,7 @@ function Index() {
             ANIMATED NIGHT SKY
             ===================================================== */}
 
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block">
 
           {/* Large floating moon */}
           <div
@@ -810,8 +810,11 @@ function Index() {
           FOOTER
           ===================================================== */}
 
-      <footer className="mt-12 text-center text-sm text-muted-foreground">
-        © Peaceful Pillow Stories by Nerochaze. All rights reserved.
+      <footer className="mt-12 space-y-3 text-center text-sm text-muted-foreground">
+        <Link to="/free-stories" className="font-bold text-primary hover:underline">
+          Free Stories
+        </Link>
+        <p>© Peaceful Pillow Stories by Nerochaze. All rights reserved.</p>
       </footer>
     </main>
   );
