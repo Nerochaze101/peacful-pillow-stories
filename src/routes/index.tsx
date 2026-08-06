@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Moon,
   Sparkles,
@@ -457,15 +457,22 @@ function Index() {
           {/* CTA */}
 
           <div
-            className="animate-fade-in mt-10"
+            className="animate-fade-in mt-8 flex w-full flex-col items-center gap-4 sm:mt-10"
             style={{
               animationDelay: "440ms",
               animationFillMode: "backwards",
             }}
           >
-            <CTA className="float-slow">
+            <CTA className="float-slow w-full max-w-sm sm:w-auto">
               🔑 Claim Your Access Pass Now
             </CTA>
+
+            <Link
+              to="/free-stories"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-5 py-2.5 text-sm font-extrabold text-primary backdrop-blur transition-colors hover:bg-secondary"
+            >
+              📖 Read 2 free stories first
+            </Link>
           </div>
         </div>
 
