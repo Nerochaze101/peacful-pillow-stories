@@ -4,22 +4,21 @@ A quick reference for updating every piece of content in the site without touchi
 
 ---
 
-## 1. Hero Image
+## 1. Hero Video
 
-The large background image behind the headline on the home page.
+The looping background video behind the headline on the home page.
 
-**File to replace:** `public/hero.jpg`
+**File to replace:** `public/hero.mp4`
 
 **How:**
-1. Prepare your image (JPEG recommended, landscape orientation, at least **1280 × 720 px**).
-2. Name it `hero.jpg` and drop it into the `public/` folder, overwriting the placeholder.
+1. Prepare your video (MP4, landscape orientation, 720p or 1080p, short loop of 5–15 seconds).
+2. Name it `hero.mp4` and drop it into the `public/` folder, overwriting the existing file.
 3. Done — the site picks it up automatically.
 
-**Want to use a different filename or format?**
-Open `src/components/HeroImage.tsx` and change the `src` prop:
-```tsx
-src="/your-image-name.png"   // ← change this line
-```
+**Want a different filename?**
+Open `src/components/HeroVideo.tsx` and change `/hero.mp4` to your new filename.
+
+> The video only plays after the page has loaded and never slows down the initial paint. On slow connections or when "reduce motion" is enabled, the dark overlay colour shows instead.
 
 ---
 
@@ -27,19 +26,17 @@ src="/your-image-name.png"   // ← change this line
 
 All story data lives in one file: **`src/data/stories.ts`**
 
-### How to add a new story
+### How to add a story from your GitHub repo
 
-1. **Upload your files to GitHub.** Put the cover image and PDF in your repo (e.g. in `covers/` and `pdfs/` folders).
+1. **Upload files to GitHub.** Put the cover image and PDF in your repo (e.g. `covers/` and `pdfs/` folders).
 
-2. **Get the raw URL** for each file. In GitHub, click the file → click **Raw** → copy the URL from your browser. It will look like:
+2. **Get the raw URL** for each file — click the file in GitHub → click **Raw** → copy the URL:
    ```
    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/my-cover.jpg
    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/my-story.pdf
    ```
 
-3. **Open `src/data/stories.ts`** and find the `stories` array near the bottom.
-
-4. **Copy this template** and paste it inside the `[` `]` array (after the last `},`):
+3. **Open `src/data/stories.ts`** and paste a new block inside the `stories` array:
    ```ts
    {
      slug: "your-story-slug",            // URL: /free-stories/your-story-slug
@@ -59,57 +56,42 @@ All story data lives in one file: **`src/data/stories.ts`**
    },
    ```
 
-5. Fill in every field and save.
+### How to add a story stored locally in this repo
 
-### Rules
+If you prefer to keep files inside the project, put them in `public/stories/` and use a local path:
+```ts
+coverUrl: "/stories/my-cover.jpg",
+pdfUrl:   "/stories/my-story.pdf",
+```
+
+### Field rules
+
 | Field | Notes |
 |---|---|
-| `slug` | Lowercase letters, numbers, hyphens only. No spaces. |
-| `coverUrl` | Portrait image recommended (e.g. 1024 × 1280 px). |
-| `pdfUrl` | Must end in `.pdf`. Use a GitHub Raw URL. |
+| `slug` | Lowercase letters, numbers, hyphens only — no spaces |
+| `coverUrl` | Portrait image recommended (e.g. 800 × 1000 px) |
+| `pdfUrl` | Must end in `.pdf`. Use GitHub raw URL or a local `/stories/` path |
 | `ageRange` | Free text, e.g. `"Ages 3–7"` |
 | `readingTime` | Free text, e.g. `"5 min read"` |
 
-### How to remove a story
-Delete the entire `{ … },` block for that story from the array.
-
-### How to reorder stories
-Move the `{ … },` blocks — the first one in the array appears first on the page.
+To **remove** a story: delete its entire `{ … },` block.  
+To **reorder** stories: move the blocks — first in the array = first on the page.
 
 ---
 
-## 3. Updating Existing Story URLs
-
-The two starter stories currently have placeholder GitHub URLs. Replace them as soon as you upload the actual files:
-
-Open `src/data/stories.ts` and look for these comments:
-```ts
-// 👇 Replace with your own GitHub raw image URL
-coverUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/..."
-// 👇 Replace with your own GitHub raw PDF URL
-pdfUrl:   "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/..."
-```
-
----
-
-## 4. Favicon
+## 3. Favicon
 
 The small icon shown in the browser tab.
 
 **File to replace:** `public/favicon.png`
 
-**How:**
-1. Create a square image, ideally **512 × 512 px** (PNG with transparency works best).
-2. Name it `favicon.png` and put it in `public/`, overwriting the placeholder.
-3. Done.
-
-> The `public/favicon.ico` file is still there for legacy browser support. You can ignore it or replace it too.
+Prepare a square PNG (512 × 512 px works well), name it `favicon.png`, and put it in `public/`.
 
 ---
 
-## 5. Reviews
+## 4. Reviews
 
-Open `src/routes/index.tsx` and find the `reviews` array near the top of the file (around line 95). The inline comment shows exactly what fields to fill in:
+Open `src/routes/index.tsx` and find the `reviews` array (around line 95). Copy and fill in:
 
 ```ts
 {
@@ -121,11 +103,9 @@ Open `src/routes/index.tsx` and find the `reviews` array near the top of the fil
 },
 ```
 
-Add as many reviews as you like; they appear in a two-column grid.
-
 ---
 
-## 6. Pricing & Checkout Link
+## 5. Pricing & Checkout Link
 
 The checkout URL is set once at the top of `src/routes/index.tsx`:
 
@@ -133,26 +113,27 @@ The checkout URL is set once at the top of `src/routes/index.tsx`:
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
 ```
 
-Change the URL there and every button on the page updates automatically.
-
-Pricing text (the dollar amounts and labels) is inside the same file in the **Pricing** section — search for `$3` or `$5` to find them.
+Change it there and every button on the page updates automatically.
 
 ---
 
-## 7. Where Files Live (Quick Reference)
+## 6. Quick File Reference
 
 ```
 public/
-  hero.jpg          ← hero background image (upload yours here)
-  favicon.png       ← browser tab icon (upload yours here)
+  hero.mp4              ← hero background video
+  favicon.png           ← browser tab icon
+  stories/
+    cover-*.jpg         ← story cover images (local)
+    *.pdf               ← story PDF files (local)
 
 src/
   data/
-    stories.ts      ← all story cards, PDFs, cover images, descriptions
+    stories.ts          ← THE file to edit for all story cards
   routes/
-    index.tsx       ← home page (hero text, vault features, pricing, reviews)
+    index.tsx           ← home page (headline, pricing, reviews)
     free-stories.index.tsx   ← free stories listing page
     free-stories.$slug.tsx   ← individual story reader page
   components/
-    HeroImage.tsx   ← swaps the hero image source
+    HeroVideo.tsx       ← swap src here if changing video filename
 ```
