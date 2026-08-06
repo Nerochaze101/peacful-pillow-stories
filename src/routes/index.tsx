@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Moon,
   Sparkles,
@@ -9,7 +9,7 @@ import {
   Check,
   Star,
 } from "lucide-react";
-import heroVideo from "@/assets/hero-forest.mp4.asset.json";
+import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
@@ -138,17 +138,8 @@ function Index() {
 
       <section className="relative -mx-5 overflow-hidden rounded-4xl sm:-mx-8">
 
-        {/* BACKGROUND VIDEO */}
-        <video
-          src={heroVideo.url}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 h-full w-full object-cover"
-          aria-label="Animated bedtime story clip of a boy in a moonlit forest"
-        />
+        {/* BACKGROUND VIDEO (poster-first, mobile-optimized) */}
+        <HeroVideo />
 
         {/* DARK / DREAMY OVERLAY */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_25%,transparent),color-mix(in_oklab,var(--background)_80%,transparent))]" />
@@ -157,7 +148,7 @@ function Index() {
             ANIMATED NIGHT SKY
             ===================================================== */}
 
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 hidden overflow-hidden sm:block">
 
           {/* Large floating moon */}
           <div
@@ -336,7 +327,7 @@ function Index() {
             HERO CONTENT
             ===================================================== */}
 
-        <div className="starfield relative z-10 flex min-h-[80vh] flex-col items-center justify-center px-5 py-20 text-center sm:px-10">
+        <div className="starfield relative z-10 flex min-h-[72svh] flex-col items-center justify-center px-4 py-14 text-center sm:min-h-[80vh] sm:px-10 sm:py-20">
 
           {/* =====================================================
               LARGE CURVED STORYBOOK BRAND
@@ -441,7 +432,7 @@ function Index() {
           {/* MAIN HEADLINE */}
 
           <h1
-            className="animate-fade-in mt-2 max-w-4xl text-4xl font-black leading-tight drop-shadow-lg sm:mt-0 sm:text-6xl"
+            className="animate-fade-in mt-2 max-w-4xl text-balance text-3xl font-black leading-tight drop-shadow-lg sm:mt-0 sm:text-6xl"
             style={{
               animationDelay: "180ms",
               animationFillMode: "backwards",
@@ -453,7 +444,7 @@ function Index() {
           {/* SUBTITLE */}
 
           <p
-            className="animate-fade-in mx-auto mt-5 max-w-2xl text-lg text-foreground/85"
+            className="animate-fade-in mx-auto mt-4 max-w-2xl text-pretty text-base text-foreground/85 sm:mt-5 sm:text-lg"
             style={{
               animationDelay: "300ms",
               animationFillMode: "backwards",
@@ -466,15 +457,22 @@ function Index() {
           {/* CTA */}
 
           <div
-            className="animate-fade-in mt-10"
+            className="animate-fade-in mt-8 flex w-full flex-col items-center gap-4 sm:mt-10"
             style={{
               animationDelay: "440ms",
               animationFillMode: "backwards",
             }}
           >
-            <CTA className="float-slow">
+            <CTA className="float-slow w-full max-w-sm sm:w-auto">
               🔑 Claim Your Access Pass Now
             </CTA>
+
+            <Link
+              to="/free-stories"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-5 py-2.5 text-sm font-extrabold text-primary backdrop-blur transition-colors hover:bg-secondary"
+            >
+              📖 Read 2 free stories first
+            </Link>
           </div>
         </div>
 
@@ -812,8 +810,11 @@ function Index() {
           FOOTER
           ===================================================== */}
 
-      <footer className="mt-12 text-center text-sm text-muted-foreground">
-        © Peaceful Pillow Stories by Nerochaze. All rights reserved.
+      <footer className="mt-12 space-y-3 text-center text-sm text-muted-foreground">
+        <Link to="/free-stories" className="font-bold text-primary hover:underline">
+          Free Stories
+        </Link>
+        <p>© Peaceful Pillow Stories by Nerochaze. All rights reserved.</p>
       </footer>
     </main>
   );
