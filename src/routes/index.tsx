@@ -9,7 +9,7 @@ import {
   Check,
   Star,
 } from "lucide-react";
-import heroVideo from "@/assets/hero-forest.mp4.asset.json";
+import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
