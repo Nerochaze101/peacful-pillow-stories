@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Replit does not support IPv6 (:::8080). Bind to 0.0.0.0 so the dev
+  // server is reachable through the Replit preview proxy.
+  vite: {
+    server: {
+      host: "0.0.0.0",
+    },
+  },
 });

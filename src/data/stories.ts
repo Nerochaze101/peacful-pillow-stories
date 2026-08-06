@@ -1,24 +1,25 @@
 /* =========================================================
-   FREE STORIES
+   FREE STORIES DATA
+   =================
 
    HOW TO ADD A NEW FREE STORY
    ---------------------------
-   Copy the template below, paste it into the `stories` array,
-   and replace the values.
+   1. Upload your cover image and PDF to your GitHub repo.
+   2. Get the raw URL for each file:
+        https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/cover.jpg
+        https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/story.pdf
+   3. Copy the template below, paste it into the `stories` array, and fill in the values.
 
-   - `pdfUrl`   : a direct link to your PDF (e.g. a raw GitHub URL:
-                  https://raw.githubusercontent.com/USER/REPO/main/story.pdf)
-   - `coverUrl` : a direct link to the cover image
-   - `slug`     : the URL of the story page -> /free-stories/your-slug
-
+   TEMPLATE — copy everything between the dashes:
+   ------------------------------------------------
    {
-     slug: "your-story-slug",
+     slug: "your-story-slug",            // becomes the URL: /free-stories/your-story-slug
      title: "Your Story Title",
      tagline: "One short line that sells the story.",
      ageRange: "Ages 3–7",
      readingTime: "5 min read",
-     coverUrl: "https://raw.githubusercontent.com/USER/REPO/main/cover.jpg",
-     pdfUrl: "https://raw.githubusercontent.com/USER/REPO/main/story.pdf",
+     coverUrl: "https://raw.githubusercontent.com/USER/REPO/main/covers/cover.jpg",
+     pdfUrl:   "https://raw.githubusercontent.com/USER/REPO/main/pdfs/story.pdf",
      description:
        "A short paragraph describing what happens in the story and how it helps at bedtime.",
      highlights: [
@@ -27,13 +28,18 @@
        "Why it works at bedtime",
      ],
    },
+   ------------------------------------------------
+
+   TIPS
+   ----
+   - `slug` must be lowercase letters, numbers, and hyphens only (no spaces).
+   - `coverUrl` should be a JPG/PNG, ideally portrait/tall (e.g. 1024 × 1280 px).
+   - `pdfUrl` must be a direct link to the .pdf file (GitHub raw URL works great).
+   - You can have as many stories in the array as you like.
+   - To REMOVE a story, delete its entire { ... } block from the array.
+   - To REORDER stories, move the blocks around — the first entry appears first on the page.
 
    ========================================================= */
-
-import lanternCover from "@/assets/stories/story-lantern.jpg.asset.json";
-import cloudCover from "@/assets/stories/story-cloud.jpg.asset.json";
-import lanternPdf from "@/assets/stories/the-lantern-bunny.pdf.asset.json";
-import cloudPdf from "@/assets/stories/the-cloud-that-carried-dreams.pdf.asset.json";
 
 export type Story = {
   slug: string;
@@ -41,11 +47,15 @@ export type Story = {
   tagline: string;
   ageRange: string;
   readingTime: string;
+  /** Direct URL to the cover image (JPG, PNG, or WebP). */
   coverUrl: string;
+  /** Direct URL to the PDF file. */
   pdfUrl: string;
   description: string;
   highlights: string[];
 };
+
+// ─── ADD / EDIT YOUR STORIES BELOW ───────────────────────────────────────────
 
 export const stories: Story[] = [
   {
@@ -54,8 +64,12 @@ export const stories: Story[] = [
     tagline: "A tiny bunny says goodnight to the whole meadow.",
     ageRange: "Ages 3–7",
     readingTime: "4 min read",
-    coverUrl: lanternCover.url,
-    pdfUrl: lanternPdf.url,
+    // 👇 Replace with your own GitHub raw image URL, e.g.:
+    //    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/lantern-bunny.jpg
+    coverUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/story-lantern.jpg",
+    // 👇 Replace with your own GitHub raw PDF URL, e.g.:
+    //    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-lantern-bunny.pdf
+    pdfUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-lantern-bunny.pdf",
     description:
       "When the moon slips over the hills, Pip the bunny lights his little lantern and wanders out to say goodnight to everyone he loves — the sleepy beetles, the tall grass, and the pond that holds the moon in its lap. A slow, warm story built to bring a busy mind down to a whisper.",
     highlights: [
@@ -70,8 +84,10 @@ export const stories: Story[] = [
     tagline: "A little bear collects one dream from every star.",
     ageRange: "Ages 4–8",
     readingTime: "5 min read",
-    coverUrl: cloudCover.url,
-    pdfUrl: cloudPdf.url,
+    // 👇 Replace with your GitHub raw image URL
+    coverUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/story-cloud.jpg",
+    // 👇 Replace with your GitHub raw PDF URL
+    pdfUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-cloud-that-carried-dreams.pdf",
     description:
       "Bo the bear finds a cloud shaped exactly like his bed and drifts past the stars, gathering one soft dream from each of them — one to keep, and one to share with someone he loves. A dreamy story about kindness and letting the day go.",
     highlights: [
@@ -81,5 +97,7 @@ export const stories: Story[] = [
     ],
   },
 ];
+
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const getStory = (slug: string) => stories.find((s) => s.slug === slug);
