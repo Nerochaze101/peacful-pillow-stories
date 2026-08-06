@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BookOpen, Clock, Moon } from "lucide-react";
+import { ArrowRight, BookOpen, Clock } from "lucide-react";
 
 import { stories } from "@/data/stories";
 import { Reveal } from "@/components/Reveal";
@@ -29,14 +29,7 @@ export const Route = createFileRoute("/free-stories/")({
 function FreeStories() {
   return (
     <main className="mx-auto w-full max-w-5xl px-5 pb-20 pt-12 sm:px-8">
-      <Link
-        to="/"
-        className="inline-flex items-center gap-2 text-sm font-bold text-primary/80 hover:text-primary"
-      >
-        <Moon className="h-4 w-4" /> Peaceful Pillow Stories
-      </Link>
-
-      <header className="mt-8 text-center">
+      <header className="mt-4 text-center">
         <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-primary">
           <BookOpen className="h-3.5 w-3.5" /> Free Stories
         </span>
