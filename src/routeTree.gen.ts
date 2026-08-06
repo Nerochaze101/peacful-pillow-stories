@@ -10,33 +10,53 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as FreeStoriesIndexRouteImport } from './routes/free-stories.index'
+import { Route as FreeStoriesSlugRouteImport } from './routes/free-stories.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FreeStoriesIndexRoute = FreeStoriesIndexRouteImport.update({
+  id: '/free-stories/',
+  path: '/free-stories/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FreeStoriesSlugRoute = FreeStoriesSlugRouteImport.update({
+  id: '/free-stories/$slug',
+  path: '/free-stories/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/free-stories/$slug': typeof FreeStoriesSlugRoute
+  '/free-stories/': typeof FreeStoriesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/free-stories/$slug': typeof FreeStoriesSlugRoute
+  '/free-stories': typeof FreeStoriesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/free-stories/$slug': typeof FreeStoriesSlugRoute
+  '/free-stories/': typeof FreeStoriesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/free-stories/$slug' | '/free-stories/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/free-stories/$slug' | '/free-stories'
+  id: '__root__' | '/' | '/free-stories/$slug' | '/free-stories/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  FreeStoriesSlugRoute: typeof FreeStoriesSlugRoute
+  FreeStoriesIndexRoute: typeof FreeStoriesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +68,28 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/free-stories/': {
+      id: '/free-stories/'
+      path: '/free-stories'
+      fullPath: '/free-stories/'
+      preLoaderRoute: typeof FreeStoriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/free-stories/$slug': {
+      id: '/free-stories/$slug'
+      path: '/free-stories/$slug'
+      fullPath: '/free-stories/$slug'
+      preLoaderRoute: typeof FreeStoriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  FreeStoriesSlugRoute: FreeStoriesSlugRoute,
+  FreeStoriesIndexRoute: FreeStoriesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
