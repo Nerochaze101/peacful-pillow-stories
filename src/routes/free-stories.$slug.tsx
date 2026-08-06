@@ -69,7 +69,7 @@ function StoryPage() {
           </p>
 
           <ul className="mt-6 space-y-3">
-            {story.highlights.map((h) => (
+            {story.highlights.map((h: string) => (
               <li key={h} className="flex items-start gap-3 text-sm">
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <span>{h}</span>
