@@ -1,24 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 
-import heroMobile from "@/assets/hero-forest-mobile.mp4.asset.json";
-import heroDesktop from "@/assets/hero-forest-720.mp4.asset.json";
-import heroPoster from "@/assets/hero-poster.jpg.asset.json";
-
 /**
- * Mobile-first hero background video.
+ * Hero background video — uses a local MP4 stored in public/.
  *
- * - The poster image paints instantly (tiny JPEG) so there is never a blank hero.
- * - The actual video file is only attached AFTER hydration, so it never competes
- *   with the first paint, and a much smaller 640px file is used on phones.
- * - Skipped entirely on data-saver connections or when the user prefers
- *   reduced motion; the poster stays as a static background.
+ * HOW TO SWAP THE HERO VIDEO
+ * --------------------------
+ * 1. Add your video file to the `public/` folder.
+ *    Recommended filename: hero.mp4
+ *    Recommended: short loop (5–15 s), landscape, 720p or 1080p.
+ * 2. If you use a different filename, change the `src` below to match.
+ *
+ * The video only plays after the page has loaded (idle callback), so it
+ * never slows down the initial paint. On slow connections or when the user
+ * has "reduce motion" enabled the video is skipped and the dark overlay
+ * colour shows instead.
  */
 export function HeroVideo({ className = "" }: { className?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     const connection = (
       navigator as Navigator & {
@@ -32,13 +36,11 @@ export function HeroVideo({ className = "" }: { className?: string }) {
 
     if (reducedMotion || lowData) return;
 
-    const isPhone = window.matchMedia("(max-width: 767px)").matches;
-    const chosen = isPhone ? heroMobile.url : heroDesktop.url;
-
-    // Wait for the browser to be idle so the LCP content lands first.
+    // Wait for the browser to be idle so the hero text paints first.
     const idle =
-      window.requestIdleCallback?.(() => setSrc(chosen), { timeout: 1200 }) ??
-      window.setTimeout(() => setSrc(chosen), 300);
+      window.requestIdleCallback?.(() => setSrc("/hero.mp4"), {
+        timeout: 1200,
+      }) ?? window.setTimeout(() => setSrc("/hero.mp4"), 300);
 
     return () => {
       if (window.cancelIdleCallback) window.cancelIdleCallback(idle as number);
@@ -61,7 +63,6 @@ export function HeroVideo({ className = "" }: { className?: string }) {
     <video
       ref={videoRef}
       src={src ?? undefined}
-      poster={heroPoster.url}
       autoPlay
       loop
       muted

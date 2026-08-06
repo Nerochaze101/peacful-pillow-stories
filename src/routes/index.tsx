@@ -9,7 +9,7 @@ import {
   Check,
   Star,
 } from "lucide-react";
-import { HeroImage } from "@/components/HeroImage";
+import { HeroVideo } from "@/components/HeroVideo";
 import { Reveal } from "@/components/Reveal";
 
 const CHECKOUT = "https://selar.com/peaceful_pillow-checkout";
@@ -138,8 +138,8 @@ function Index() {
 
       <section className="relative -mx-5 overflow-hidden rounded-4xl sm:-mx-8">
 
-        {/* BACKGROUND IMAGE — upload your image as public/hero.jpg to update */}
-        <HeroImage />
+        {/* BACKGROUND VIDEO — swap public/hero.mp4 to change the hero */}
+        <HeroVideo />
 
         {/* DARK / DREAMY OVERLAY */}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,color-mix(in_oklab,var(--background)_25%,transparent),color-mix(in_oklab,var(--background)_80%,transparent))]" />

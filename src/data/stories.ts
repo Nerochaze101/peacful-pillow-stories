@@ -5,7 +5,7 @@
    HOW TO ADD A NEW FREE STORY
    ---------------------------
    1. Upload your cover image and PDF to your GitHub repo.
-   2. Get the raw URL for each file:
+   2. Get the raw URL for each file from GitHub:
         https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/cover.jpg
         https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/story.pdf
    3. Copy the template below, paste it into the `stories` array, and fill in the values.
@@ -37,7 +37,7 @@
    - `pdfUrl` must be a direct link to the .pdf file (GitHub raw URL works great).
    - You can have as many stories in the array as you like.
    - To REMOVE a story, delete its entire { ... } block from the array.
-   - To REORDER stories, move the blocks around — the first entry appears first on the page.
+   - To REORDER stories, move the blocks around — the first entry appears first.
 
    ========================================================= */
 
@@ -64,12 +64,8 @@ export const stories: Story[] = [
     tagline: "A tiny bunny says goodnight to the whole meadow.",
     ageRange: "Ages 3–7",
     readingTime: "4 min read",
-    // 👇 Replace with your own GitHub raw image URL, e.g.:
-    //    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/lantern-bunny.jpg
-    coverUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/story-lantern.jpg",
-    // 👇 Replace with your own GitHub raw PDF URL, e.g.:
-    //    https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-lantern-bunny.pdf
-    pdfUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-lantern-bunny.pdf",
+    coverUrl: "/stories/cover-lantern-bunny.jpg",
+    pdfUrl: "/stories/the-lantern-bunny.pdf",
     description:
       "When the moon slips over the hills, Pip the bunny lights his little lantern and wanders out to say goodnight to everyone he loves — the sleepy beetles, the tall grass, and the pond that holds the moon in its lap. A slow, warm story built to bring a busy mind down to a whisper.",
     highlights: [
@@ -84,16 +80,30 @@ export const stories: Story[] = [
     tagline: "A little bear collects one dream from every star.",
     ageRange: "Ages 4–8",
     readingTime: "5 min read",
-    // 👇 Replace with your GitHub raw image URL
-    coverUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/covers/story-cloud.jpg",
-    // 👇 Replace with your GitHub raw PDF URL
-    pdfUrl: "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pdfs/the-cloud-that-carried-dreams.pdf",
+    coverUrl: "/stories/cover-cloud-dreams.jpg",
+    pdfUrl: "/stories/the-cloud-that-carried-dreams.pdf",
     description:
       "Bo the bear finds a cloud shaped exactly like his bed and drifts past the stars, gathering one soft dream from each of them — one to keep, and one to share with someone he loves. A dreamy story about kindness and letting the day go.",
     highlights: [
       "Encourages sharing and gratitude",
       "Dreamy imagery that eases children into sleep",
       "Beautiful full-page illustrations, print friendly",
+    ],
+  },
+  {
+    slug: "the-moonlight-fox",
+    title: "The Moonlight Fox",
+    tagline: "A fox discovers that being still is its own kind of adventure.",
+    ageRange: "Ages 4–8",
+    readingTime: "5 min read",
+    coverUrl: "/stories/cover-moonlight-fox.jpg",
+    pdfUrl: "/stories/the-moonlight-fox.pdf",
+    description:
+      "Rue the fox has been running all day — chasing butterflies, splashing in puddles, climbing hills. But when evening comes and she sits quietly under a glowing mushroom in the forest, she discovers sounds and magic she has never noticed before. A gentle story about the gift of slowing down.",
+    highlights: [
+      "Teaches children the value of stillness and listening",
+      "Dreamy forest imagery perfect for winding down",
+      "Ends with a reflection question about quiet moments",
     ],
   },
 ];
