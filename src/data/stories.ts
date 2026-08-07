@@ -64,7 +64,7 @@ export const stories: Story[] = [
     tagline: "A tiny bunny says goodnight to the whole meadow.",
     ageRange: "Ages 3–7",
     readingTime: "4 min read",
-    coverUrl: "/stories/cover-lantern-bunny.jpg",
+    coverUrl: "https://github.com/Faucets-io/peacful-pillow-stories/blob/main/public/stories/IMG_1960.png",
     pdfUrl: "/stories/the-lantern-bunny.pdf",
     description:
       "When the moon slips over the hills, Pip the bunny lights his little lantern and wanders out to say goodnight to everyone he loves — the sleepy beetles, the tall grass, and the pond that holds the moon in its lap. A slow, warm story built to bring a busy mind down to a whisper.",
