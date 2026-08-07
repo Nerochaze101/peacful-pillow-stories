@@ -101,27 +101,10 @@ function StoryPage() {
       <section className="mt-14">
         <h2 className="text-2xl font-black">Read it right here</h2>
         <div className="surface-card mt-4 overflow-hidden p-2">
-          <object
-            data={story.pdfUrl}
-            type="application/pdf"
-            className="h-[70vh] min-h-[420px] w-full rounded-2xl"
-            aria-label={`${story.title} PDF preview`}
-          >
-            <div className="p-6 text-center text-sm text-muted-foreground">
-              Your browser can&apos;t display PDFs inline.{" "}
-              <a
-                href={story.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold text-primary underline"
-              >
-                Open {story.title}
-              </a>{" "}
-              in a new tab instead.
-            </div>
-          </object>
+          <PdfPreview pdfUrl={story.pdfUrl} title={story.title} />
         </div>
       </section>
+
 
       {others.length > 0 && (
         <section className="mt-14">
