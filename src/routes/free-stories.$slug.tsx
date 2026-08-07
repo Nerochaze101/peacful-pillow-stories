@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Check, Clock, Download, FileText } from "lucide-react";
 
 import { getStory, stories } from "@/data/stories";
+import { PdfPreview } from "@/components/PdfPreview";
 
 export const Route = createFileRoute("/free-stories/$slug")({
   loader: ({ params }) => {
